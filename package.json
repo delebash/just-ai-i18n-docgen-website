@@ -11,14 +11,22 @@
     "build": "astro build",
     "build:local": "node scripts/sync-docs.js --from local && astro build",
     "preview": "astro preview",
-    "deploy": "gh workflow run deploy.yml --ref main",
+    "deploy": "node scripts/deploy.js",
     "astro": "astro",
     "sync-docs:local": "node scripts/sync-docs.js --from local",
-    "sync-docs:release": "node scripts/sync-docs.js --from release",
-    "sync-docs:main": "node scripts/sync-docs.js --from main"
+    "sync-docs:release": "node scripts/sync-docs.js --from release"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.41.5",
     "astro": "^7.1.6"
+  },
+  "justSite": {
+    "appRepo": "delebash/just_ai_i18n_docgen",
+    "appDir": "../just_ai_i18n_docgen",
+    "siteRepo": "delebash/just-ai-i18n-docgen-website",
+    "untilFirstRelease": "main"
+  },
+  "devDependencies": {
+    "front-matter": "^4.0.2"
   }
 }

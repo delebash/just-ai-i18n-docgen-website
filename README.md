@@ -22,10 +22,9 @@ npm run build:local  # the docs of the app checked out beside this repo, then di
 ```
 
 `prebuild` fetches `docs.tar.gz` from the latest release of `delebash/just_ai_i18n_docgen` (the
-app's release workflow attaches it). Until the app's first release it takes the docs from the app's
-`main` branch instead (`docs/*.md` and `docs/toc.json`, what a release packs) — JustWrite's site
-always has a release, this one doesn't yet. `npm run sync-docs:release -- --tag v0.2.0` pins a
-release; `npm run sync-docs:main` takes `main`'s docs either way.
+app's release workflow attaches it). Until the app's first release it takes the docs on the app's
+`main` branch instead (`docs/*.md` and `docs/toc.json`, what a release packs — `justSite.untilFirstRelease`).
+`npm run sync-docs:release -- --tag v0.2.0` pins a release.
 
 ## What's where
 
@@ -35,14 +34,17 @@ release; `npm run sync-docs:main` takes `main`'s docs either way.
 | `src/pages/features.astro` | Every feature by group, and where to get the app |
 | `src/data/features.js` | The feature list — the app README's Features, kept in step with it |
 | `public/screenshots/` | Real captures from the app's e2e harness (`npm run screenshots` in the app) |
-| `scripts/sync-docs.js` | The docs import (`--from local`, `--from release` or `--from main`) |
+| `scripts/sync-docs.js` · `scripts/deploy.js` · `.github/workflows/deploy.yml` | The docs import (`--from local` or `--from release`), `npm run deploy` and the build it starts — the kit's (`just-core/website/`), as they are |
 | `src/styles/global.css` · `starlight-brand.css` | The look — the app's tokens and its splash plate's palette |
 
 ## Deploy
 
 ```bash
-npm run deploy       # builds and publishes the site on GitHub (gh workflow run deploy.yml)
+npm run deploy       # says which docs go live, asks, then starts the site's workflow on GitHub
+npm run deploy -- --yes   # no question
 ```
+
+`justSite` in `package.json` names the app, this repo, and `untilFirstRelease: "main"` (the app has no release yet).
 
 `.github/workflows/deploy.yml` builds and publishes to GitHub Pages only when asked — `npm run deploy`
 or the Actions page's *Run workflow* — never on a push, a schedule or another repository's workflow:
