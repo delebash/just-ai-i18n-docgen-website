@@ -1,0 +1,34 @@
+---
+// SPDX-License-Identifier: MIT
+// The rules every run keeps — the app's "what bites" list, in the user's words (docs/*.md).
+const PROMISES = [
+  ["A run writes only proposals", "The locale file is byte-identical when a run finishes. Applying is your click, and it is undoable."],
+  ["The engine never signs off", "The confirmation pass pre-ticks rows; the acceptance is always a person's, stamped with a reviewer name — never the computer's user name."],
+  ["Shielding is a substitution", "Placeholders become tokens the model never sees as text. A restored string missing a token is a failure, retried — not shipped."],
+  ["Keys are never silently skipped", "A key that fails every retry is named, and the command line exits non-zero."],
+];
+---
+<section class="section promises">
+  <div class="wrap">
+    <p class="eyebrow">The promise</p>
+    <h2>Nothing ships unseen.</h2>
+    <p class="lede">Four rules every run keeps — each one held by a test in the app's own suite.</p>
+    <div class="grid">
+      {PROMISES.map(([title, body]) => (
+        <div class="card">
+          <h3>{title}</h3>
+          <p>{body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .promises {
+    background: var(--paper-2);
+  }
+  .card {
+    border-left: 3px solid var(--gold);
+  }
+</style>

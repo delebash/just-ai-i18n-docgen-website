@@ -1,0 +1,55 @@
+---
+// SPDX-License-Identifier: MIT
+// Every feature, by the part of the work it belongs to — src/data/features.js.
+import { FEATURE_GROUPS } from "../data/features.js";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">Features</p>
+    <h2>What it does.</h2>
+    <p class="lede">Everything here is in the app today; each group links to the page of the guide that explains it.</p>
+    {FEATURE_GROUPS.map((g) => (
+      <div class="group">
+        <h3 class="group-head">
+          <span class="star" aria-hidden="true">✶</span> {g.name} <span class="line">— {g.line}</span>
+          <a class="more" href={`${base}/docs/${g.doc}/`}>In the guide →</a>
+        </h3>
+        <div class="grid">
+          {g.items.map(([title, body]) => (
+            <div class="card">
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .group + .group {
+    margin-top: 2.5rem;
+  }
+  .group-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .star {
+    color: var(--gold);
+  }
+  .line {
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .more {
+    margin-left: auto;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+</style>

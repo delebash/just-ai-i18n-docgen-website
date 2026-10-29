@@ -1,0 +1,55 @@
+---
+// SPDX-License-Identifier: MIT
+// The opening: the app's splash plate, what it is, and the two ways in.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<section class="hero section">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">A desktop app for i18n</p>
+      <h1>Translate your app's locale files — and check every string before it ships.</h1>
+      <p class="lede">
+        Just AI i18n &amp; DocGen translates standard i18n JSON with a local or online AI, verifies
+        every string it wrote, and puts a review workspace between the engine and your files. Your
+        locale file stays byte-identical until you press Apply.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href={`${base}/docs/getting-started/`}>Read the guide</a>
+        <a class="btn btn-ghost" href="https://github.com/delebash/just_ai_i18n_docgen">Source on GitHub</a>
+      </div>
+    </div>
+    <img class="hero-plate" src={`${base}/splash-plate.jpg`} alt="JSON locale file, through an AI, into translated help pages" width="1376" height="768" />
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .hero-grid {
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+  }
+  h1 {
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    margin: 0 0 1rem;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .hero-plate {
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    height: auto;
+  }
+  @media (max-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

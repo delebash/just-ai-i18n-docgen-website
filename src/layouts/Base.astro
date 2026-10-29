@@ -1,0 +1,87 @@
+---
+// SPDX-License-Identifier: MIT
+// The landing pages' frame: the head, the nav (Overview · Features · Docs) and the theme toggle.
+// The docs pages are Starlight's own frame (astro.config.js); the theme choice is shared with them.
+import "../styles/global.css";
+import mark from "../assets/mark.svg";
+
+const {
+  title = "Just AI i18n & DocGen — translate your app's i18n files, verified",
+  description = "A desktop app that translates i18n JSON locale files with a local or online AI, checks every string it wrote, and stages it for a human to review — nothing ships unseen.",
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const path = Astro.url.pathname.replace(/\/$/, "");
+const home = `${base}/`;
+const onOverview = path === base || path === "";
+const onFeatures = path === `${base}/features`;
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${Astro.site}${base.slice(1)}/splash-plate.jpg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <script is:inline>
+      // before the first paint: the saved choice, else the system's
+      (function () {
+        try {
+          var saved = localStorage.getItem("docgen-theme");
+          var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-head">
+      <a class="brand" href={home} aria-label="Just AI i18n & DocGen home">
+        <img src={mark.src} alt="" width="26" height="26" />
+        <span>Just AI i18n &amp; DocGen</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href={home} class:list={{ active: onOverview }}>Overview</a>
+        <a href={`${base}/features/`} class:list={{ active: onFeatures }}>Features</a>
+        <a href={`${base}/docs/`}>Docs</a>
+        <a href="https://github.com/delebash/just_ai_i18n_docgen">GitHub</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light or dark" title="Toggle light or dark">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" />
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <span>Just AI i18n &amp; DocGen — MIT licensed. A family app beside <a href="https://delebash.github.io/justwrite-website/">JustWrite</a>.</span>
+        <span>
+          <a href={`${base}/docs/`}>User guide</a> ·
+          <a href="https://github.com/delebash/just_ai_i18n_docgen">Source</a> ·
+          <a href="https://github.com/delebash/just_ai_i18n_docgen/releases">Releases</a>
+        </span>
+      </div>
+    </footer>
+
+    <script is:inline>
+      document.getElementById("theme-toggle")?.addEventListener("click", function () {
+        var html = document.documentElement;
+        var next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", next);
+        try {
+          localStorage.setItem("docgen-theme", next);
+        } catch (e) {}
+      });
+    </script>
+  </body>
+</html>

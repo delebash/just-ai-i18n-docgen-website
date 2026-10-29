@@ -1,0 +1,61 @@
+/* SPDX-License-Identifier: MIT */
+/* The site's look carried into Starlight's docs pages, so /docs/ reads as the same product. The
+   values are src/styles/global.css's — change one there, change it here. Starlight owns the layout;
+   this file only re-points its colour and type variables. */
+
+:root {
+  --sl-font: system-ui, "Segoe UI", -apple-system, "Helvetica Neue", sans-serif;
+  --sl-font-mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
+}
+
+/* light — the splash plate's paper and navy, the app's indigo */
+:root[data-theme="light"] {
+  --sl-color-accent-low: oklch(0.958 0.019 277);
+  --sl-color-accent: oklch(0.511 0.23 277);
+  --sl-color-accent-high: oklch(0.457 0.215 277);
+  --sl-color-text-accent: oklch(0.457 0.215 277);
+
+  /* Starlight's "white" is the strongest text colour — in light mode, the ink */
+  --sl-color-white: #15254a;
+  --sl-color-gray-1: #26365a;
+  --sl-color-gray-2: #3c4a66;
+  --sl-color-gray-3: #6b7489;
+  --sl-color-gray-4: #a7aab4;
+  --sl-color-gray-5: #e0dacd;
+  --sl-color-gray-6: #efebe1;
+  --sl-color-gray-7: #f6f3ec;
+  /* …and "black" the page */
+  --sl-color-black: #f6f3ec;
+  --sl-color-bg: #f6f3ec;
+  --sl-color-bg-nav: #fffdf8;
+  --sl-color-bg-sidebar: #f2eee5;
+  --sl-color-hairline: #e0dacd;
+  --sl-color-hairline-light: #e9e4d8;
+}
+
+/* dark — the app's dark tokens */
+:root[data-theme="dark"] {
+  --sl-color-accent-low: oklch(0.295 0.047 277);
+  --sl-color-accent: oklch(0.68 0.158 277);
+  --sl-color-accent-high: oklch(0.776 0.106 277);
+  --sl-color-text-accent: oklch(0.776 0.106 277);
+
+  --sl-color-white: #e6e6e6;
+  --sl-color-gray-1: #d4d4d4;
+  --sl-color-gray-2: #b8b8b8;
+  --sl-color-gray-3: #8a8a8a;
+  --sl-color-gray-4: #5d636b;
+  --sl-color-gray-5: #343a42;
+  --sl-color-gray-6: #22272d;
+  --sl-color-black: #171a1f;
+  --sl-color-bg: #171a1f;
+  --sl-color-bg-nav: #1d2126;
+  --sl-color-bg-sidebar: #1b1f24;
+  --sl-color-hairline: #343a42;
+  --sl-color-hairline-light: #2a3038;
+}
+
+/* the prose measure, as the landing pages' */
+.sl-markdown-content {
+  max-width: 68ch;
+}

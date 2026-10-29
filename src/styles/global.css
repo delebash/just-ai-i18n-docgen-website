@@ -1,0 +1,277 @@
+/* SPDX-License-Identifier: MIT */
+/* The site's look — docgen's own: the splash plate's paper, navy linework and gold arrows, the
+   app's indigo accent (src/css/tokens.css: oklch(0.511 0.230 277) = #4f46e5) and its system type.
+   src/styles/starlight-brand.css carries the same values into the docs pages. */
+
+:root {
+  --paper: #f6f3ec;
+  --paper-2: #efebe1;
+  --card: #fffdf8;
+  --ink: #15254a;
+  --ink-2: #3c4a66;
+  --muted: #6b7489;
+  --line: #e0dacd;
+  --accent: oklch(0.511 0.23 277);
+  --accent-ink: oklch(0.457 0.215 277);
+  --accent-soft: oklch(0.958 0.019 277);
+  --gold: #c89a3a;
+  --shadow: 0 10px 30px rgba(21, 37, 74, 0.1);
+  --font-ui: system-ui, "Segoe UI", -apple-system, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
+  --measure: 68ch;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  /* the app's dark tokens */
+  --paper: #171a1f;
+  --paper-2: #1d2126;
+  --card: #22272d;
+  --ink: #e6e6e6;
+  --ink-2: #b8b8b8;
+  --muted: #8a8a8a;
+  --line: #343a42;
+  --accent: oklch(0.68 0.158 277);
+  --accent-ink: oklch(0.776 0.106 277);
+  --accent-soft: oklch(0.295 0.047 277);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+}
+
+a {
+  color: var(--accent-ink);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+code,
+kbd {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.05em 0.35em;
+}
+
+/* ── chrome ───────────────────────────────────────────── */
+.site-head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.8rem var(--gutter);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brand img {
+  width: 26px;
+  height: 26px;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  margin-left: auto;
+  font-size: 0.92rem;
+}
+
+.site-nav a {
+  color: var(--ink-2);
+  text-decoration: none;
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+}
+
+.site-nav a.active {
+  color: var(--accent-ink);
+  border-bottom-color: var(--accent);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+}
+
+/* ── sections ─────────────────────────────────────────── */
+.section {
+  padding: clamp(3rem, 7vw, 5.5rem) var(--gutter);
+}
+
+.section + .section {
+  border-top: 1px solid var(--line);
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.6rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  margin: 0 0 0.8rem;
+}
+
+h3 {
+  font-size: 1.08rem;
+  margin: 0 0 0.35rem;
+}
+
+.lede {
+  max-width: var(--measure);
+  color: var(--ink-2);
+  font-size: 1.08rem;
+  margin: 0 0 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-ink);
+}
+
+.btn-ghost {
+  border-color: var(--line);
+  background: var(--card);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+.site-foot {
+  padding: 2rem var(--gutter);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.site-foot .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+}
+
+.site-foot a {
+  color: var(--ink-2);
+}
+
+@media (max-width: 560px) {
+  .site-head {
+    gap: 0.8rem;
+  }
+  .brand span {
+    display: none;
+  }
+  .site-nav {
+    gap: 0.9rem;
+  }
+}

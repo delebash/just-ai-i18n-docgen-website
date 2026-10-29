@@ -1,0 +1,23 @@
+{
+  "name": "just-ai-i18n-docgen-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/sync-docs.js --from local --silent-if-missing",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "prebuild": "node scripts/sync-docs.js --from release --silent-if-missing",
+    "build": "astro build",
+    "build:local": "node scripts/sync-docs.js --from local && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync-docs:local": "node scripts/sync-docs.js --from local",
+    "sync-docs:release": "node scripts/sync-docs.js --from release",
+    "sync-docs:main": "node scripts/sync-docs.js --from main"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.41.5",
+    "astro": "^7.1.6"
+  }
+}

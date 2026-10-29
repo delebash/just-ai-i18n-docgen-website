@@ -1,0 +1,49 @@
+---
+// SPDX-License-Identifier: MIT
+// Real captures of the app (its e2e harness) — each opens full size.
+import { SHOTS } from "../data/features.js";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">The app</p>
+    <h2>The screens.</h2>
+    <p class="lede">
+      Captured from the desktop app on JustWrite's catalog — the 3,147 keys docgen translates and
+      reviews for its sibling app.
+    </p>
+    <div class="shots">
+      {SHOTS.map(([file, caption]) => (
+        <figure>
+          <a href={`${base}/screenshots/${file}`}>
+            <img src={`${base}/screenshots/${file}`} alt={caption} loading="lazy" width="1920" height="1009" />
+          </a>
+          <figcaption>{caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .shots {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  }
+  figure {
+    margin: 0;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  figcaption {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

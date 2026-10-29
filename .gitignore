@@ -1,0 +1,25 @@
+# build output
+dist/
+.astro/
+
+# the docs pulled from the app (scripts/sync-docs.js) — Starlight's docs collection, nested one
+# level so they serve at /docs/
+src/content/docs/docs/
+src/data/docs-toc.json
+.docs-cache/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# environment
+.env
+.env.production
+
+# OS and editors
+.DS_Store
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,33 @@
+---
+// SPDX-License-Identifier: MIT
+// Features — every feature by group, then where to get it.
+import Base from "../layouts/Base.astro";
+import FeatureGroups from "../components/FeatureGroups.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<Base title="Features — Just AI i18n & DocGen" description="Translate, verify, review: every feature of Just AI i18n & DocGen, and where the guide explains it.">
+  <FeatureGroups />
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Get it</p>
+      <h2>Windows, macOS and Linux.</h2>
+      <p class="lede">
+        Installers are attached to each release on GitHub. From source: clone the app beside the
+        family kit (just-core), <code>npm install</code>, <code>npm run dev</code> — the README has the details.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/delebash/just_ai_i18n_docgen/releases">Releases</a>
+        <a class="btn btn-ghost" href="https://github.com/delebash/just_ai_i18n_docgen#quick-start">Build from source</a>
+        <a class="btn btn-ghost" href={`${base}/docs/getting-started/`}>Getting started</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+</style>
