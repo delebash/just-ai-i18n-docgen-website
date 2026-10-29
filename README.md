@@ -40,11 +40,14 @@ release; `npm run sync-docs:main` takes `main`'s docs either way.
 
 ## Deploy
 
-`.github/workflows/deploy.yml` builds and publishes to GitHub Pages on a push to `main`, by hand
-(`workflow_dispatch`), and when the app's release workflow dispatches `docs-updated` (it needs the
-app repo's `WEBSITE_DISPATCH_TOKEN` secret, a fine-grained token on this repo with Contents read and
-write). Until the app's first release, a change to its docs reaches the site on the site's next build. In the repo's
-**Settings → Pages**, the source is *GitHub Actions*.
+```bash
+npm run deploy       # builds and publishes the site on GitHub (gh workflow run deploy.yml)
+```
+
+`.github/workflows/deploy.yml` builds and publishes to GitHub Pages only when asked — `npm run deploy`
+or the Actions page's *Run workflow* — never on a push, a schedule or another repository's workflow:
+after an app release (or a change to the app's docs before its first one), run it. Its build takes the
+docs as `npm run build` does. In the repo's **Settings → Pages**, the source is *GitHub Actions*.
 
 ## License
 
