@@ -22,7 +22,7 @@ export const FEATURE_GROUPS = [
     doc: "verification",
     items: [
       ["Offline checks", "Placeholders, plural halves, glossary, punctuation edges, numbers, brackets, doubled words, whitespace — deterministic, no engine, no network."],
-      ["The probe", "Re-translates a sample with the same engine and flags where the two passes disagree. It refuses to run at temperature 0."],
+      ["The probe", "Translates every key a second time with the same engine and flags where the two passes disagree. It refuses to run at temperature 0."],
       ["The confirmation pass", "Asks the engine only about targets identical to their source, and pre-ticks the ones it confirms. It never signs anything off."],
       ["Terminology", "A key that renders a term differently from the rest of your catalogue is flagged."],
       ["Escalation", "Re-translate only the stubborn keys with a stronger preset; what the everyday model got right stays untouched."],
@@ -66,7 +66,7 @@ export const FEATURE_GROUPS = [
     doc: "cli",
     items: [
       ["Five commands", "translate, check, escalate, accept, extract — check exits non-zero on failures, so it gates CI."],
-      ["One implementation, two doors", "A CLI run shows up in Review exactly like an app run; the installed app carries the command beside its exe."],
+      ["One implementation, two doors", "The same checks and acceptance records as the app; translate on the command line writes the locale file itself, and what it wrote shows up in Review's queue. The installed app carries the command beside its exe."],
     ],
   },
   {
@@ -77,7 +77,7 @@ export const FEATURE_GROUPS = [
       ["A built-in local engine", "Quick Setup checks your computer, proposes a model that fits, and downloads llama.cpp and the model — private and free."],
       ["Measured models only", "The catalog lists models this tool's checks were run against; a model that writes lovely prose can still mangle placeholders."],
       ["Any provider", "OpenAI, Anthropic and Gemini directly, or any OpenAI-compatible server — Ollama, LM Studio and more."],
-      ["Routing by feature", "Translate, review and confirm each point at their own preset; the Lab shows the real prompt the pipeline builds."],
+      ["Routing by feature", "Translate, review and confirm each point at their own preset; each has one prompt, edited in the Lab and tried there on a live sample of your project."],
     ],
   },
   {
