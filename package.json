@@ -17,8 +17,8 @@
     "sync-docs:release": "node scripts/sync-docs.js --from release"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.41.5",
-    "astro": "^7.1.6"
+    "@astrojs/starlight": "^0.42.10",
+    "astro": "^7.4.7"
   },
   "justSite": {
     "appRepo": "delebash/just_ai_i18n_docgen",
